@@ -234,23 +234,94 @@
     .timeline-item:nth-child(odd) .timeline-content{ margin-right: 52%; text-align:right; }
     .timeline-item:nth-child(even) .timeline-content{ margin-left: 52%; text-align:left; }
 
-    /* Footer */
-    footer{
-      background: rgba(0,0,0,.8); border-top: 1px solid rgba(212,175,55,.25);
-      text-align:center; padding: 2.2rem 1rem; color: var(--muted);
+    /* CHARACTERS SECTION - ALTERADO PARA MESMA LINHA */
+    #characters {
+      max-width: 1200px;
+      margin: 0 auto 5rem auto;
+      padding: 0 1rem;
     }
-    .footer-tri{ font-size: 1.4rem; color: var(--pure-gold); margin-bottom:.4rem; display:inline-block; }
-
-    /* Responsive */
-    @media (max-width: 820px){
-      .timeline::before{ left: 20px; }
-      .timeline-item .timeline-content{
-        margin: 0 0 0 60px; text-align: left; width: calc(100% - 80px);
+    .characters-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 cards na mesma linha no desktop */
+      gap: 1.5rem;
+    }
+    @media (max-width: 960px) {
+      .characters-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 por linha em tablet */
       }
-      .timeline-dot{ left: 20px; }
-      .carousel-btn{ width: 40px; height: 40px; font-size: 1.2rem; }
-      .carousel-btn.prev{ left: -20px; }
-      .carousel-btn.next{ right: -20px; }
+    }
+    @media (max-width: 560px) {
+      .characters-grid {
+        grid-template-columns: 1fr; /* empilha no mobile */
+      }
+    }
+    .character-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(212,175,55,.25);
+      border-radius: 12px;
+      padding: 1rem;
+      transition: .25s;
+    }
+    .character-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--pure-gold);
+      box-shadow: 0 12px 28px rgba(212,175,55,.2);
+    }
+    .character-card h3 {
+      color: var(--pure-gold);
+      margin-bottom: .5rem;
+    }
+    .character-card p {
+      color: #e6e2cc;
+      line-height: 1.4;
+    }
+    .character-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: .5rem;
+    }
+
+    /* ENDINGS SECTION */
+    #endings {
+      max-width: 900px;
+      margin: 0 auto 5rem auto;
+      padding: 2rem 1.5rem;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(212,175,55,.25);
+      border-radius: 12px;
+    }
+    #endings h2 {
+      color: var(--pure-gold);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    #endings p {
+      color: #e6e2cc;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    #endings ul {
+      list-style: disc inside;
+      color: #e6e2cc;
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(212,175,55,0.2);
+      background: rgba(10,10,10,0.8);
+    }
+    footer .footer-tri {
+      font-size: 2rem;
+      color: var(--pure-gold);
+      margin-bottom: 0.5rem;
     }
   </style>
 </head>
@@ -261,11 +332,13 @@
       <div class="logo"><span class="tri">▲</span> Shadow Heir</div>
       <ul>
         <li><a href="#story">História</a></li>
+        <li><a href="#characters">Personagens</a></li>
         <li><a href="#corruption">Corrupção</a></li>
         <li><a href="#abilities">Habilidades</a></li>
         <li><a href="#dungeons">Masmorras</a></li>
         <li><a href="#oot">Ocarina</a></li>
         <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#endings">Finais</a></li>
       </ul>
     </nav>
   </header>
@@ -315,7 +388,7 @@
         </div>
       </article>
       <article class="story-card">
-        <img class="story-media" loading="lazy" src="" alt="Koume e Kotake em ritual com criaturas das trevas"/>
+        <img class="story-media" loading="lazy" src="./images/characters/koume-kotake-1.png" alt="Koume e Kotake em ritual com criaturas das trevas"/>
         <div class="story-body">
           <h3>Conflito</h3>
           <p>Koume e Kotake realizam rituais sombrios para transformar Link no hospedeiro perfeito de Ganon,
@@ -323,12 +396,34 @@
         </div>
       </article>
       <article class="story-card">
-        <img class="story-media" loading="lazy" src="" alt="Link diante do Templo dos Espíritos com atmosfera psicológica"/>
+        <img class="story-media" loading="lazy" src="./images/characters/corruption-avatar.png" alt="Link diante do Templo dos Espíritos com atmosfera psicológica"/>
         <div class="story-body">
           <h3>Jornada</h3>
           <p>Decisões morais e uso (ou recusa) de poderes sombrios alteram aparência, música, mundo e relações com NPCs,
             culminando no Templo dos Espíritos e no confronto com o Avatar da Corrupção.</p>
         </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CHARACTERS -->
+  <section id="characters">
+    <h2>Personagens Principais</h2>
+    <div class="characters-grid">
+      <article class="character-card">
+        <img src="./images/characters/link.png" alt="Link criança com aura sutil de corrupção"/>
+        <h3>Link</h3>
+        <p>Protagonista que enfrenta uma maldição oculta. Sua aparência e habilidades mudam conforme suas escolhas morais, refletindo a luta interna entre pureza e corrupção.</p>
+      </article>
+      <article class="character-card">
+        <img src="./images/characters/koume-kotake-2.png" alt="Koume e Kotake voando em vassouras"/>
+        <h3>Koume e Kotake</h3>
+        <p>Bruxas Gerudo que descobrem a maldição e buscam transformar Link no hospedeiro perfeito de Ganon, espalhando corrupção por Hyrule.</p>
+      </article>
+      <article class="character-card">
+        <img src="./images/characters/corruption-avatar.png" alt="Avatar da Corrupção"/>
+        <h3>Avatar da Corrupção</h3>
+        <p>Manifestação física da essência corrompida de Ganon dentro de Link, o chefe final que representa o ápice da maldição.</p>
       </article>
     </div>
   </section>
@@ -339,28 +434,28 @@
     <p class="corruption-intro">Sem números, sem HUD — apenas metamorfoses visuais e consequências no mundo.</p>
     <div class="corr-grid">
       <figure class="corr-card">
-        <img class="corr-media" loading="lazy" src="./images/ambient/hyrule-castle.png" alt="Pureza: Link normal, Hyrule vibrante"/>
+        <img class="corr-media" loading="lazy" src="./images/characters/link.png" alt="Pureza: Link normal, Hyrule vibrante"/>
         <figcaption class="corr-body">
           <h4>Pureza</h4>
           <p>Mundo vibrante, NPCs acolhedores, mecânicas clássicas.</p>
         </figcaption>
       </figure>
       <figure class="corr-card">
-        <img class="corr-media" loading="lazy" src="" alt="Despertar: olhos dourados, distorções sutis"/>
+        <img class="corr-media" loading="lazy" src="./images/characters/tranformations/second-form.png" alt="Despertar: olhos dourados, distorções sutis"/>
         <figcaption class="corr-body">
           <h4>Despertar</h4>
           <p>Olhos dourados, leve aumento de dano, desconfiança crescente.</p>
         </figcaption>
       </figure>
       <figure class="corr-card">
-        <img class="corr-media" loading="lazy" src="" alt="Transformação: cabelo com tons Gerudo, acordeão sombrio"/>
+        <img class="corr-media" loading="lazy" src="./images/characters/tranformations/third-form.png" alt="Transformação: cabelo com tons Gerudo, acordeão sombrio"/>
         <figcaption class="corr-body">
           <h4>Transformação</h4>
           <p>Cabelo com tons Gerudo, lojas caras, músicas distorcidas.</p>
         </figcaption>
       </figure>
       <figure class="corr-card">
-        <img class="corr-media" loading="lazy" src="" alt="Abismo: pele acinzentada, céu vermelho, aura púrpura"/>
+        <img class="corr-media" loading="lazy" src="./images/characters/tranformations/final-form.png" alt="Abismo: pele acinzentada, céu vermelho, aura púrpura"/>
         <figcaption class="corr-body">
           <h4>Abismo</h4>
           <p>Hostilidade geral, céu vermelho, arsenal sombrio completo.</p>
@@ -374,7 +469,7 @@
     <h2>Habilidades Sombrias</h2>
     <div class="abilities-grid">
       <article class="ability-card">
-        <img class="ability-icon" loading="lazy" src="" alt="Ícone: Golpe Sombrio"/>
+        <img class="ability-icon" loading="lazy" src="./images/abilities/shadow-stab.png" alt="Ícone: Golpe Sombrio"/>
         <div>
           <div class="ability-level">Nível 1 (21–40%)</div>
           <h3 class="ability-title">Golpe Sombrio</h3>
@@ -382,7 +477,7 @@
         </div>
       </article>
       <article class="ability-card">
-        <img class="ability-icon" loading="lazy" src="" alt="Ícone: Portal Sombrio"/>
+        <img class="ability-icon" loading="lazy" src="./images/abilities/skadu-portal.png" alt="Ícone: Portal Sombrio"/>
         <div>
           <div class="ability-level">Nível 2 (41–60%)</div>
           <h3 class="ability-title">Portal Sombrio</h3>
@@ -390,7 +485,7 @@
         </div>
       </article>
       <article class="ability-card">
-        <img class="ability-icon" loading="lazy" src="" alt="Ícone: Absorção Vital"/>
+        <img class="ability-icon" loading="lazy" src="./images/abilities/lifesteal.png" alt="Ícone: Absorção Vital"/>
         <div>
           <div class="ability-level">Nível 3 (61–80%)</div>
           <h3 class="ability-title">Absorção Vital</h3>
@@ -398,7 +493,7 @@
         </div>
       </article>
       <article class="ability-card">
-        <img class="ability-icon" loading="lazy" src="" alt="Ícone: Forma Sombria"/>
+        <img class="ability-icon" loading="lazy" src="./images/abilities/shadow-form.png" alt="Ícone: Forma Sombria"/>
         <div>
           <div class="ability-level">Nível 4 (81–100%)</div>
           <h3 class="ability-title">Forma Sombria</h3>
@@ -406,15 +501,7 @@
         </div>
       </article>
       <article class="ability-card">
-        <img class="ability-icon" loading="lazy" src="" alt="Ícone: Grito do Terror"/>
-        <div>
-          <div class="ability-level">Nível 2 (41–60%)</div>
-          <h3 class="ability-title">Grito do Terror</h3>
-          <p>Paralisa inimigos próximos por alguns segundos.</p>
-        </div>
-      </article>
-      <article class="ability-card">
-        <img class="ability-icon" loading="lazy" src="" alt="Ícone: Lâmina de Ganon"/>
+        <img class="ability-icon" loading="lazy" src="./images/abilities/ganon-sword.png" alt="Ícone: Lâmina de Ganon"/>
         <div>
           <div class="ability-level">Nível 4 (90–100%)</div>
           <h3 class="ability-title">Lâmina de Ganon</h3>
@@ -435,7 +522,7 @@
             <img class="dungeon-media" loading="lazy" src="./images/dungeons/shadow-woods.png" alt="Floresta Sombria: árvores murchas e luz filtrada"/>
             <div class="dungeon-body">
               <h3>Floresta Sombria</h3>
-              <p>Puzzles de luz e sombra; Boss: espírito da floresta corrompido.
+              <p>Puzzles de luz e sombra; Boss: espírito da floresta corrompido.</p>
             </div>
           </article>
           <!-- Slide 2 -->
@@ -443,7 +530,7 @@
             <img class="dungeon-media" loading="lazy" src="./images/dungeons/cave-of-sorrows.png" alt="Caverna dos Lamentos: câmara rochosa espectral"/>
             <div class="dungeon-body">
               <h3>Caverna dos Lamentos</h3>
-              <p>Melodias acalmam espíritos; Boss: Goron corrompido.
+              <p>Melodias acalmam espíritos; Boss: Goron corrompido.</p>
             </div>
           </article>
           <!-- Slide 3 -->
@@ -451,7 +538,7 @@
             <img class="dungeon-media" loading="lazy" src="./images/dungeons/cloudy-lake.png" alt="Lago Turvo: águas enegrecidas no Domínio Zora"/>
             <div class="dungeon-body">
               <h3>Lago Turvo</h3>
-              <p>Purificar fontes em águas venenosas; Boss: entidade aquática gigante.
+              <p>Purificar fontes em águas venenosas; Boss: entidade aquática gigante.</p>
             </div>
           </article>
           <!-- Slide 4 -->
@@ -459,7 +546,7 @@
             <img class="dungeon-media" loading="lazy" src="./images/dungeons/gerudo-fortress.png" alt="Fortaleza Gerudo corrompida com portais sombrios"/>
             <div class="dungeon-body">
               <h3>Fortaleza Gerudo Corrompida</h3>
-              <p>Stealth e portais; Boss: Koume & Kotake.
+              <p>Stealth e portais; Boss: Koume & Kotake.</p>
             </div>
           </article>
           <!-- Slide 5 -->
@@ -478,7 +565,7 @@
     </div>
   </section>
 
-  <!-- OCARINA OF TIME SECTION (largura inteira, sem modo seguro) -->
+  <!-- OCARINA OF TIME SECTION -->
   <section id="oot">
     <h2>Ocarina of Time — Referência do Jogo Original</h2>
 
@@ -514,7 +601,7 @@
           <summary>Personagens</summary>
           <ul>
             <li><strong>Protagonista:</strong> Link criança; evolução visual e mecânica conforme as escolhas</li>
-            <li><strong>Antagonistas:</strong> Link corrompido como o Avatar da Corrupção. Koume e Kotake podém ser enquadrados como vilãs secundarias</li>
+            <li><strong>Antagonistas:</strong> Link corrompido como o Avatar da Corrupção. Koume e Kotake podem ser enquadrados como vilãs secundárias</li>
           </ul>
         </details>
 
@@ -610,6 +697,16 @@
         <div class="timeline-dot"></div>
       </div>
     </div>
+  </section>
+
+  <!-- ENDINGS -->
+  <section id="endings">
+    <h2>Finais Múltiplos</h2>
+    <p>O destino de Link depende das escolhas do jogador e do nível de corrupção acumulado durante a jornada.</p>
+    <ul>
+      <li><strong>Final Canônico (Pureza):</strong> Link purifica a maldição, renuncia temporariamente à Triforce da Coragem e parte em busca de Navi, conectando-se com Majora's Mask.</li>
+      <li><strong>Final Alternativo (Corrupção):</strong> Link abraça a essência de Ganon, tornando-se o Herdeiro das Sombras e uma nova ameaça para Hyrule.</li>
+    </ul>
   </section>
 
   <footer>
