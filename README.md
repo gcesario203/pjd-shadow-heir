@@ -1,4 +1,13 @@
 # The Legend of Zelda — Shadow Heir
+
+## Estrutura de repositório
+```bash
+pdj-shadow-heir/
+├── images/             # Caminho de imagens geradas por IA para compor a landing page
+├── README.md           # Resumo do relatório
+├── index.html          # Landing page desenvolvida com o intúito de apresentar a ideia do jogo. (https://gcesario203.github.io/pjd-shadow-heir/)[Sendo servida pelo github pages]
+├── relatorio-shadow-heir.pdf          # Relaótio concredo contendo uma análise do jogo The Legend of Zelda - Ocarina of Time junto com as idealizações de forma detalhada de TOZ - Shadow Heira
+```
 Continuação de The Legend of Zelda: Ocarina of Time idealizada como avaliação da disciplina “Princípio de Jogos Digitais”.
 
 IDJ001 — Princípio de Jogos Digitais  
