@@ -16,6 +16,7 @@ pjd-shadow-heir/
 ├── README.md                   # Resumo do relatório
 ├── index.html                  # Landing page para apresentar a ideia do jogo
 ├── relatorio-shadow-heir.pdf   # Relatório contendo análise de Ocarina of Time e a proposta de Shadow Heir
+├── apresentacao.pptx           # Apresentação em .ppt
 ```
 
 ## 1) Introdução
